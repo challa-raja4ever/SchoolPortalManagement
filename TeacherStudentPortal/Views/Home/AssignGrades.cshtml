@@ -1,0 +1,44 @@
+﻿@using TeacherStudentPortal.Models
+@model AssignGradeModel
+@{
+    ViewBag.Title = "AssignGrades";
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            @Html.Partial("_LogoutPartial")
+        </div>
+    </div>
+</div>
+<h2 style="color: darkblue; font-family: fantasy;">Hello @ViewBag.TeacherName</h2>
+<h4 style="color:lightseagreen">You are adding grade to the student for the CourseId - @ViewBag.courseId</h4>
+<br/>
+<div class="row">
+    <div class="col-md-6">
+        <section id="assignGradeForm">
+            @using (Html.BeginForm("AssignGrades", "Home", new { CourseId = ViewBag.courseId }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StudentId, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.StudentId, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Grade, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Assign Grade" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+

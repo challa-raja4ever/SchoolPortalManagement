@@ -1,0 +1,68 @@
+﻿@using TeacherStudentPortal.Models
+@model StudentViewModel
+@{
+    ViewBag.Title = "StudentHome";
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            @Html.Partial("_LogoutPartial")
+        </div>
+    </div>
+</div>
+<h2 style="color: darkblue; font-family: fantasy;">Hello @Model.Name</h2>
+@if (Model.CoursesList.Count > 0)
+{
+    <h4 style="color:cadetblue">Following are the list of courses</h4>
+    <br />
+    <table>
+        <thead>
+            <tr>
+                <th style="padding-right: 30px;padding-bottom: 10px">Id</th>
+                <th style="padding-right: 30px;padding-bottom: 10px">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in Model.CoursesList)
+        {
+            <tr>
+                <td style="padding-bottom: 10px; padding-right: 20px">@course.Id</td>
+                <td style="padding-bottom: 10px;">@course.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@if (Model.CoursesList.Count == 0)
+{
+    <h4 style="color:cadetblue">Admin didn't add any records related to courses</h4>
+}
+@if (Model.CourseGrades.Count > 0)
+{
+    <h4 style="color:cadetblue">Following are the grades you obtained in the courses which are updated by respective teachers</h4>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th style="padding-right: 30px;padding-bottom: 10px">Course Id</th>
+            <th style="padding-right: 30px;padding-bottom: 10px">Course Name</th>
+            <th style="padding-bottom: 10px">Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var studentGrade in Model.CourseGrades)
+        {
+            <tr>
+                <td style="padding-bottom: 10px;">@studentGrade.CourseId</td>
+                <td style="padding-bottom: 10px;">@studentGrade.CourseName</td>
+                <td style="padding-bottom: 10px;">@studentGrade.Grade</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@if (Model.CourseGrades.Count == 0)
+{
+    <h4 style="color:cadetblue">No teacher has given grades to you in any courses</h4>
+}
+
