@@ -167,7 +167,7 @@ CREATE PROCEDURE [dbo].[GetStudentsAndTeachers]
 AS
 BEGIN
 	Select Name,CourseTeaching from Teachers
-	Select Name from Students
+	Select StudentId,Name from Students
 END
 GO
 
