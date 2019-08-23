@@ -186,10 +186,15 @@ namespace TeacherStudentPortal.Utilities
                     teachers.Add(teacherCourse);
                 }
                 DataTable studentsDataSetTable = dataSet.Tables[1];
-                List<string> students = new List<string>();
+                var students = new List<Student>();
                 foreach (var row in studentsDataSetTable.Rows)
                 {
-                    students.Add(((DataRow)row).ItemArray[0].ToString());
+                    var student = new Student
+                    {
+                        Id = int.Parse(((DataRow)row).ItemArray[0].ToString()),
+                        Name = ((DataRow)row).ItemArray[1].ToString()
+                    };
+                    students.Add(student);
                 }
 
                 model.StudentList = students;

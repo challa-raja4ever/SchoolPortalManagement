@@ -50,13 +50,20 @@
     {
         <h4 align="left" style="color:lightseagreen">The whole students list in the college</h4>
         <table>
+            <thead>
+            <tr>
+                <th style="padding-right: 60px; color: darkblue;">Id</th>
+                <th style="color: darkblue;">Name</th>
+            </tr>
+            </thead>
             <tbody>
-                @foreach (var student in Model.StudentList)
-                {
-                    <tr style="padding-right: 20px;">
-                        <td>@student</td>
-                    </tr>
-                }
+            @foreach (var student in Model.StudentList)
+            {
+                <tr style="padding-right: 20px;">
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                </tr>
+            }
             </tbody>
         </table>
     }
